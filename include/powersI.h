@@ -7,6 +7,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <math.h>
 
 struct NumList
@@ -19,10 +20,10 @@ typedef struct NumList Number;
 /*
  * checkArgs
  * Will ensure that there are three command line arguments, and exit otherwise
- * Parameters: The number of arguments
+ * Parameters: The number of arguments, and the argument parameters
  * Return: void
  */
-void checkArgs(int numArgs);
+void checkArgs(int argc, char** argv);
 
 /*
  * createNumber
@@ -38,7 +39,7 @@ Number * createNumber(int theNum);
  * Parameters: The base, the highest power to be calculated, and 1 or 0 (print to a file or not)
  * Return: void
  */
-void printPowers(int base, int iterations, int print);
+void printPowers(int base, int iterations, char* printFlag);
 
 /*
  * printPower

@@ -10,15 +10,23 @@
 /*
  * checkArgs
  * Will ensure that there are four command line arguments, and exit otherwise
- * Parameters: The number of arguments
+ * Parameters: The number of arguments, and the argument details
  * Return: void
  */
-void checkArgs(int numArgs)
+void checkArgs(int argc, char** argv)
 {
-    if(numArgs != 4)
+    if(argc != 3 && argc != 4)
     {
-        printf("Usage: Please enter the program runnable, followed by a base number, the number of powers to calculate, and whether to print to a file or not.\n");
+        printf("Usage: ~/bin/powers base exponent [-o]\n");
         exit(0);
+    }
+    else
+    {
+        if (argc == 4 && strcmp(argv[3], "-o") != 0)
+        {
+            printf("Usage: ~/bin/powers base exponent [-o]\n");
+            exit(0);
+        }
     }
 }
 
@@ -50,13 +58,14 @@ Number * createNumber(int theNum)
  * Parameters: The base, the highest power to be calculated, and 1 or 0 (print to a file or not)
  * Return: void
  */
-void printPowers(int base, int iterations, int print)
+void printPowers(int base, int iterations, char* printFlag)
 {
     Number * start;
     Number * temp;
     Number * newNum;
     FILE * theFile;
     int toAdd;
+    int print;
     int i;
 
     start = NULL;
@@ -64,7 +73,13 @@ void printPowers(int base, int iterations, int print)
     newNum = NULL;
     theFile = NULL;
     toAdd = 0;
+    print = 0;
     i = 0;
+
+    if (printFlag != NULL && strcmp(printFlag, "-o") == 0)
+    {
+        print = 1;
+    }
 
     if(print == 1)
     {
