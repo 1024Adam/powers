@@ -2,7 +2,7 @@
 
 /*
  * Adam Reid
- * 2014
+ * 2017
  */
 
 #include "powersI.h"
@@ -10,7 +10,7 @@
 /*
  * checkArgs
  * Will ensure that there are four command line arguments, and exit otherwise
- * Parameters: The number of arguments, and the argument details
+ * Parameters: The number of arguments, and the argument parameters
  * Return: void
  */
 void checkArgs(int argc, char** argv)
@@ -105,30 +105,22 @@ void printPowers(int base, int iterations, char* printFlag)
 
     for(i = 1; i <= iterations; i++)
     {
-        /*printf("%d\n", i);*/
         toAdd = 0;
         temp = start;
         while(temp != NULL)
         {
-            /*printf("hello\n");*/
             temp->num *= base;
-            /*printf("toAdd: %d\n", toAdd);*/
             temp->num += toAdd;
             toAdd = 0;
             if(temp->num >= 10)
             {
-                /*printf("BAM\n");*/
                 if(temp->prev == NULL)
                 {
                     newNum = createNumber(0);
                     temp->prev = newNum;
-                    /*printf("temp->num: %d\n", temp->num);*/
-                    /*printf("temp->prev->num: %d\n", temp->prev->num);*/
                 }
-                /*printf("temp->num: %d\n", temp->num);*/
                 toAdd = temp->num / 10;
                 temp->num %= 10;
-                /*printf("temp->num: %d\n", temp->num);*/
             }
             temp = temp->prev;
         }
@@ -145,13 +137,10 @@ void printPowers(int base, int iterations, char* printFlag)
     }
     if(print == 1)
     {
-        /*printToFile(theFile, start);
-        fputs("\n", theFile);*/
         fclose(theFile);
         printf("Output has been written to 'output.txt'\n");
     }
     emptyList(start);
-
 }
 
 /*
@@ -185,14 +174,12 @@ void printToFile(FILE * theFile, Number * start)
     if(start->prev == NULL)
     {
         sprintf(toPrint, "%d", start->num);
-        /*printf("%s\n", toPrint);*/
         fputs(toPrint, theFile);
     }
     else
     {
         printToFile(theFile, start->prev);
         sprintf(toPrint, "%d", start->num);
-        /*printf("%s\n", toPrint);*/
         fputs(toPrint, theFile);
     }
 }

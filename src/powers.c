@@ -2,7 +2,7 @@
 
 /*
  * Adam Reid
- * 2014
+ * 2017
  */
 
 #include "powersI.h"
