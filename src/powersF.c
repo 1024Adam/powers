@@ -17,14 +17,14 @@ void checkArgs(int argc, char** argv)
 {
     if(argc != 3 && argc != 4)
     {
-        printf("Usage: ~/bin/powers base exponent [-o]\n");
+        printf("Usage: bin/powers base exponent [-o]\n");
         exit(0);
     }
     else
     {
         if (argc == 4 && strcmp(argv[3], "-o") != 0)
         {
-            printf("Usage: ~/bin/powers base exponent [-o]\n");
+            printf("Usage: bin/powers base exponent [-o]\n");
             exit(0);
         }
     }
